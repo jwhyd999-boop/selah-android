@@ -4,7 +4,7 @@
 
 SELAH is being developed from an MIT-licensed Android audio-player foundation. The current codebase still contains the original local-audio playback engine; the Coptic content catalogue, Arabic-first experience, and online audio delivery are being built in stages.
 
-> **Development build:** SELAH is not ready for public installation yet. The APKs in `release/` are legacy SELAH builds and are not SELAH releases. Do not distribute them as SELAH.
+> **Development build:** SELAH is not ready for public installation yet. The APKs in `release/` are legacy Resonate builds and are not SELAH releases. Do not distribute them as SELAH.
 
 ## Product direction
 
