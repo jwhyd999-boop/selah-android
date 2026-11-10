@@ -5,13 +5,14 @@ Supabase schema in `supabase/migrations/202611110001_selah_catalog.sql`.
 
 ## Current state
 
-- The Android client now includes a read-only REST catalogue client and typed audio model.
+- The Android client includes a read-only REST catalogue client, typed audio model, and an IO-backed catalogue repository.
+- Category screens request published items and render loading, empty, error, retry, and recording-list states in Arabic/English.
+- Selecting a catalogue item creates a stable `selah:<uuid>` Media3 item and hands it to the existing MediaSession; the remote playback path still requires device verification.
 - Configure `SUPABASE_URL` and `SUPABASE_ANON_KEY` as Gradle project properties or environment variables; both default to blank.
 - No Supabase project has been configured for this app yet.
 - The SQL migration is a proposal in this repository; it has not been applied.
 - No audio objects have been uploaded and no remote catalogue is available.
-- The current Media3 service is initialized for local-library playback. Do not claim
-  remote streaming works until remote MediaItems are exercised on a device.
+- The existing Media3 service remains the single playback owner for local and remote MediaItems. Remote streaming is implemented in the app path but is not yet verified on a physical device; do not treat it as release-ready until CI and device smoke tests pass.
 
 ## Public read contract
 
