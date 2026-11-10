@@ -98,6 +98,7 @@ fun HomeScreen(
                 }
             }
         }
+        if (jumpBackIn.isNotEmpty() || recentlyAdded.isNotEmpty() || mostPlayed.isNotEmpty()) {
         item(key = "shuffle", contentType = "shuffle") {
             Button(
                 onClick = onShuffleAll,
@@ -122,6 +123,7 @@ fun HomeScreen(
                     modifier = Modifier.padding(start = 8.dp),
                 )
             }
+        }
         }
 
         if (jumpBackIn.isEmpty() && recentlyAdded.isEmpty() && mostPlayed.isEmpty()) {
