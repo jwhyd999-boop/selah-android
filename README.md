@@ -16,7 +16,9 @@ The app interface is being prepared in Arabic and English, with right-to-left su
 This repository contains the first SELAH foundation, not a finished public release.
 
 - The home screen presents the four content sections.
-- Each section currently has an honest empty state; the catalogue is not connected yet.
+- Each section now requests its published recordings from the read-only Supabase REST client and displays loading, empty, error, and retry states.
+- Selecting a published catalogue recording hands its HTTPS storage URL to the existing Media3 MediaSession for playback; device-local library playback remains available.
+- The catalogue client is not connected to a live Supabase project yet, so the app will show a clear not-configured state until project settings and approved audio are supplied.
 - The Android application ID is `com.selah.audio`; the current version is `1.0.0`.
 - Internet permission is present for the planned catalogue and streaming integration.
 - A Supabase SQL migration is prepared under `supabase/migrations/`, but it has **not** been applied to a project.
