@@ -16,6 +16,8 @@
     <string name="category_agpeya_hint">صلوات السواعي اليومية</string>
     <string name="selah_empty_title">مساحة الاستماع جاهزة</string>
     <string name="selah_empty_body">سيظهر المحتوى الصوتي القبطي الأرثوذكسي هنا عند إضافته إلى المكتبة.</string>
+    <string name="category_empty_title">القسم ده بيتجهّز</string>
+    <string name="category_empty_body">هتظهر التسجيلات هنا بعد ربط مكتبة سِلاه وإضافة المحتوى الصوتي.</string>
     <string name="home_jump_back_in">كمّل من حيث توقفت</string>
     <string name="home_recently_added">أُضيف حديثًا</string>
     <string name="home_most_played">الأكثر استماعًا</string>
