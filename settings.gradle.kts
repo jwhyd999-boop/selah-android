@@ -20,5 +20,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Resonate"
+rootProject.name = "SELAH"
 include(":app")
