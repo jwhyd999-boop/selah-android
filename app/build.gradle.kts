@@ -1,4 +1,12 @@
 import java.util.Properties
+
+val selahSupabaseUrl = providers.gradleProperty("SUPABASE_URL")
+    .orElse(providers.environmentVariable("SUPABASE_URL")).orElse("").get()
+val selahSupabaseAnonKey = providers.gradleProperty("SUPABASE_ANON_KEY")
+    .orElse(providers.environmentVariable("SUPABASE_ANON_KEY")).orElse("").get()
+fun String.asBuildConfigString(): String =
+    "\\""+replace("\\\\", "\\\\\\\\").replace("\\"", "\\\\\\"")+"\\\""
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -28,6 +36,8 @@ android {
         targetSdk = 36
         versionCode = 1
         versionName = "1.0.0"
+        buildConfigField("String", "SUPABASE_URL", selahSupabaseUrl.asBuildConfigString())
+        buildConfigField("String", "SUPABASE_ANON_KEY", selahSupabaseAnonKey.asBuildConfigString())
     }
 
     signingConfigs {
