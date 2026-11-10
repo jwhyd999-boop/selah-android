@@ -59,6 +59,8 @@ data class UserPrefs(
     val replayGainMode: ReplayGainMode = ReplayGainMode.OFF,
     val resumeOnConnect: Boolean = false,
     val longAudioMemory: Boolean = true,
+    /** Remote SELAH favorites use UUID strings, never synthetic MediaStore IDs. */
+    val catalogFavoriteIds: Set<String> = emptySet(),
 )
 
 private object UserPrefsSerializer : Serializer<UserPrefs> {

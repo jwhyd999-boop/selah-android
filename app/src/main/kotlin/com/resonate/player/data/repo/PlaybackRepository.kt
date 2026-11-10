@@ -3,6 +3,7 @@ package com.resonate.player.data.repo
 import androidx.media3.common.MediaItem
 import androidx.media3.common.MediaMetadata
 import androidx.sqlite.db.SimpleSQLiteQuery
+import com.resonate.player.data.catalog.CatalogAudioItem
 import com.resonate.player.data.db.SongBrowseDao
 import com.resonate.player.data.db.SongEntity
 import com.resonate.player.data.prefs.SortField
@@ -77,6 +78,26 @@ class PlaybackRepository @Inject constructor(
             .build()
         val controller = connection.awaitController()
         controller.setMediaItems(listOf(item))
+        controller.prepare()
+        controller.play()
+    }
+
+    /** Plays a published remote SELAH recording through the same MediaSession. */
+    suspend fun playCatalogItem(item: CatalogAudioItem, audioUrl: String, artworkUrl: String?) {
+        val mediaItem = MediaItem.Builder()
+            .setMediaId("selah:${item.id}")
+            .setUri(audioUrl)
+            .setMediaMetadata(
+                MediaMetadata.Builder()
+                    .setTitle(item.titleAr)
+                    .setArtist(item.speakerOrPerformer.orEmpty())
+                    .setAlbumTitle("SELAH")
+                    .setArtworkUri(artworkUrl?.let(android.net.Uri::parse))
+                    .build()
+            )
+            .build()
+        val controller = connection.awaitController()
+        controller.setMediaItems(listOf(mediaItem))
         controller.prepare()
         controller.play()
     }

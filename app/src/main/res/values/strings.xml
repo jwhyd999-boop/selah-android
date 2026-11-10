@@ -9,6 +9,19 @@
     <string name="tab_you">You</string>
 
     <!-- Home -->
+    <string name="home_categories">Explore SELAH</string>
+    <string name="category_sermons">Sermons</string>
+    <string name="category_sermons_hint">Coptic Orthodox teaching</string>
+    <string name="category_hymns">Hymns</string>
+    <string name="category_hymns_hint">Church praise &amp; melodies</string>
+    <string name="category_psalms">Psalms</string>
+    <string name="category_psalms_hint">The Book of Psalms</string>
+    <string name="category_agpeya">Agpeya</string>
+    <string name="category_agpeya_hint">Hours &amp; daily prayers</string>
+    <string name="selah_empty_title">Your listening space is ready</string>
+    <string name="selah_empty_body">Coptic Orthodox audio will appear here as the library is added.</string>
+    <string name="category_empty_title">This section is getting ready</string>
+    <string name="category_empty_body">Audio recordings will appear here when the SELAH catalogue is connected and content is published.</string>
     <string name="home_jump_back_in">Jump back in</string>
     <string name="home_recently_added">Recently added</string>
     <string name="home_most_played">Most played</string>
@@ -102,10 +115,10 @@
     <string name="settings_storage">Storage</string>
     <string name="settings_about">About</string>
     <string name="settings_rescan">Rescan library</string>
-    <string name="about_no_internet">This app has no Internet permission. Nothing leaves your phone — the OS enforces it.</string>
+    <string name="about_no_internet">Network access will load the SELAH catalogue and stream published audio when connected. Local files remain on your device.</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_whats_new">What\'s new</string>
-    <string name="about_changelog">1.2.1 — Tablet &amp; foldable layouts · seekable mini-player · artwork placeholder\n\n1.2.0 — Your sound stats · backup &amp; restore · 4×1 widget · excluded folders\n\n1.1.0 — Crossfade · skip silence · volume leveling · resume on connect · long-audio memory\n\n1.0.0 — The foundation: library, playback, chroma bleed, queue, playlists, lyrics, search, equalizer, widget</string>
+    <string name="about_changelog">1.0.0 — SELAH foundation: four Coptic Orthodox audio sections, Arabic and English interface, and preparation for a published audio catalogue. More listening features and content will arrive as the library is connected.</string>
     <string name="about_license">MIT License · © 2026 Kimhab</string>
     <string name="about_license_body">Free for everyone. Use it, copy it, change it, share it.</string>
     <string name="about_licenses_body">Built with Jetpack Compose, Media3 ExoPlayer, Room, Coil, Hilt, and Glance — all Apache-2.0. Fonts: Bricolage Grotesque, Figtree (OFL) and JetBrains Mono (OFL).</string>
@@ -196,4 +209,10 @@
     <string name="replay_gain_off">Off</string>
     <string name="replay_gain_track">By track</string>
     <string name="replay_gain_album">By album</string>
+    <string name="catalog_loading">Loading recordings…</string>
+    <string name="catalog_error">Couldn’t load the SELAH catalogue. Check your connection and configuration.</string>
+    <string name="catalog_retry">Try again</string>
+    <string name="catalog_not_configured">The SELAH catalogue is not connected yet.</string>
+    <string name="catalog_empty">No published recordings in this section yet.</string>
+    <string name="catalog_play">Play recording</string>
 </resources>

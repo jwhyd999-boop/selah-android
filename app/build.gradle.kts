@@ -1,4 +1,5 @@
 import java.util.Properties
+
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -10,6 +11,14 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.room)
 }
+
+val selahSupabaseUrl = providers.gradleProperty("SUPABASE_URL")
+    .orElse(providers.environmentVariable("SUPABASE_URL")).orElse("").get()
+val selahSupabaseAnonKey = providers.gradleProperty("SUPABASE_ANON_KEY")
+    .orElse(providers.environmentVariable("SUPABASE_ANON_KEY")).orElse("").get()
+fun String.asBuildConfigString(): String =
+    "\"" + replace("\\", "\\\\").replace("\"", "\\\"") + "\""
+
 
 // Signing credentials live in git-ignored keystore.properties; without it the
 // release build falls back to unsigned (CI-safe).
@@ -23,11 +32,13 @@ android {
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.resonate.player"
+        applicationId = "com.selah.audio"
         minSdk = 26
         targetSdk = 36
-        versionCode = 4
-        versionName = "1.2.1"
+        versionCode = 1
+        versionName = "1.0.0"
+        buildConfigField("String", "SUPABASE_URL", selahSupabaseUrl.asBuildConfigString())
+        buildConfigField("String", "SUPABASE_ANON_KEY", selahSupabaseAnonKey.asBuildConfigString())
     }
 
     signingConfigs {

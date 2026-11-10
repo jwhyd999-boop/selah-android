@@ -29,6 +29,7 @@ class PlayerConnection @Inject constructor(
 ) {
     data class NowPlaying(
         val songId: Long,
+        val mediaId: String,
         val title: String,
         val artist: String,
         val album: String,
@@ -53,6 +54,7 @@ class PlayerConnection @Inject constructor(
 
     data class QueueEntry(
         val songId: Long,
+        val mediaId: String,
         val title: String,
         val artist: String,
         val artworkUri: String?,
@@ -125,6 +127,7 @@ class PlayerConnection @Inject constructor(
             val item = controller.getMediaItemAt(index)
             QueueEntry(
                 songId = item.mediaId.toLongOrNull() ?: -1L,
+                mediaId = item.mediaId,
                 title = item.mediaMetadata.title?.toString().orEmpty(),
                 artist = item.mediaMetadata.artist?.toString().orEmpty(),
                 artworkUri = item.mediaMetadata.artworkUri?.toString(),
@@ -139,6 +142,7 @@ class PlayerConnection @Inject constructor(
         _nowPlaying.value = item?.let {
             NowPlaying(
                 songId = it.mediaId.toLongOrNull() ?: -1L,
+                mediaId = it.mediaId,
                 title = it.mediaMetadata.title?.toString().orEmpty(),
                 artist = it.mediaMetadata.artist?.toString().orEmpty(),
                 album = it.mediaMetadata.albumTitle?.toString().orEmpty(),

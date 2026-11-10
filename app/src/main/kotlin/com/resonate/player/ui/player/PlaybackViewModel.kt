@@ -3,6 +3,8 @@ package com.resonate.player.ui.player
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.Player
+import com.resonate.player.data.catalog.CatalogAudioItem
+import com.resonate.player.data.catalog.CatalogRepository
 import com.resonate.player.data.db.PlayStatDao
 import com.resonate.player.data.prefs.SortPref
 import com.resonate.player.data.prefs.UserPrefsStore
@@ -31,6 +33,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class PlaybackViewModel @Inject constructor(
     private val playbackRepository: PlaybackRepository,
+    private val catalogRepository: CatalogRepository,
     private val connection: PlayerConnection,
     private val playStatDao: PlayStatDao,
     private val chromaEngine: ChromaEngine,
@@ -118,9 +121,9 @@ class PlaybackViewModel @Inject constructor(
         }
     }
 
-    /** §2.4: lyrics icon appears only when the file actually carries lyrics. */
+    /** Lyrics are local-file keyed; remote SELAH items are resolved by UUID separately. */
     val lyrics: StateFlow<com.resonate.player.data.lyrics.Lyrics?> = connection.nowPlaying
-        .map { it?.songId }
+        .map { it?.songId?.takeIf { id -> id > 0 } }
         .distinctUntilChanged()
         .mapLatest { songId -> songId?.let { lyricsRepository.lyricsFor(it) } }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), null)
@@ -136,6 +139,14 @@ class PlaybackViewModel @Inject constructor(
             minutes == com.resonate.player.playback.PlaybackService.SLEEP_END_OF_TRACK -> -1L
             else -> null
         }
+    }
+
+    fun playCatalogItem(item: CatalogAudioItem) = viewModelScope.launch {
+        playbackRepository.playCatalogItem(
+            item = item,
+            audioUrl = catalogRepository.audioUrl(item),
+            artworkUrl = catalogRepository.artworkUrl(item),
+        )
     }
 
     fun playExternal(uri: android.net.Uri) = viewModelScope.launch {
@@ -156,13 +167,31 @@ class PlaybackViewModel @Inject constructor(
 
     val isFavorite: StateFlow<Boolean> = connection.nowPlaying
         .flatMapLatest { playing ->
-            if (playing == null) flowOf(false)
-            else playStatDao.isFavoriteFlow(playing.songId).map { it == true }
+            when {
+                playing == null -> flowOf(false)
+                playing.mediaId.startsWith("selah:") -> {
+                    val catalogId = playing.mediaId.removePrefix("selah:")
+                    prefsStore.prefs.map { catalogId in it.catalogFavoriteIds }
+                }
+                playing.songId > 0 -> playStatDao.isFavoriteFlow(playing.songId).map { it == true }
+                else -> flowOf(false)
+            }
         }
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), false)
 
     fun toggleFavorite() = viewModelScope.launch {
-        connection.nowPlaying.value?.let { playStatDao.toggleFavorite(it.songId) }
+        connection.nowPlaying.value?.let { playing ->
+            if (playing.mediaId.startsWith("selah:")) {
+                val catalogId = playing.mediaId.removePrefix("selah:")
+                prefsStore.update { prefs ->
+                    val favorites = prefs.catalogFavoriteIds.toMutableSet()
+                    if (!favorites.add(catalogId)) favorites.remove(catalogId)
+                    prefs.copy(catalogFavoriteIds = favorites)
+                }
+            } else if (playing.songId > 0) {
+                playStatDao.toggleFavorite(playing.songId)
+            }
+        }
     }
 
     /** §1.1: the room changes color with the track. Null = fallback accents. */

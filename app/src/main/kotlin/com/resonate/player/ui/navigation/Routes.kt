@@ -6,6 +6,9 @@ import kotlinx.serialization.Serializable
 data object HomeRoute
 
 @Serializable
+data class CategoryRoute(val category: String)
+
+@Serializable
 data object LibraryRoute
 
 @Serializable
