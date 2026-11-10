@@ -5,7 +5,9 @@ Supabase schema in `supabase/migrations/202611110001_selah_catalog.sql`.
 
 ## Current state
 
-- The Android app has no Supabase URL, public anon key, or configured project.
+- The Android client now includes a read-only REST catalogue client and typed audio model.
+- Configure `SUPABASE_URL` and `SUPABASE_ANON_KEY` as Gradle project properties or environment variables; both default to blank.
+- No Supabase project has been configured for this app yet.
 - The SQL migration is a proposal in this repository; it has not been applied.
 - No audio objects have been uploaded and no remote catalogue is available.
 - The current Media3 service is initialized for local-library playback. Do not claim
@@ -55,4 +57,4 @@ path; otherwise show `plain_text`. Missing lyrics must not prevent playback.
 6. Store only the Supabase project URL and public anon/publishable key in app config.
    Keep all privileged upload and moderation actions server-side.
 
-No credentials or real audio URLs belong in this document or in source control.
+The public anon/publishable key is intended for client use and must be restricted by RLS; never use a service-role key. No credentials or real audio URLs belong in this document or in source control.
