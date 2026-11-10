@@ -209,4 +209,10 @@
     <string name="replay_gain_off">Off</string>
     <string name="replay_gain_track">By track</string>
     <string name="replay_gain_album">By album</string>
+    <string name="catalog_loading">Loading recordings…</string>
+    <string name="catalog_error">Couldn’t load the SELAH catalogue. Check your connection and configuration.</string>
+    <string name="catalog_retry">Try again</string>
+    <string name="catalog_not_configured">The SELAH catalogue is not connected yet.</string>
+    <string name="catalog_empty">No published recordings in this section yet.</string>
+    <string name="catalog_play">Play recording</string>
 </resources>
