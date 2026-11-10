@@ -26,6 +26,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import java.util.Locale
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.resonate.player.R
@@ -119,7 +120,11 @@ fun CategoryScreen(
                             horizontalArrangement = Arrangement.spacedBy(12.dp),
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(item.titleAr, style = ResonateTheme.type.title, color = ResonateTheme.colors.bone)
+                                Text(
+                                    text = if (Locale.getDefault().language == "ar" || item.titleEn.isNullOrBlank()) item.titleAr else item.titleEn,
+                                    style = ResonateTheme.type.title,
+                                    color = ResonateTheme.colors.bone,
+                                )
                                 item.speakerOrPerformer?.takeIf(String::isNotBlank)?.let {
                                     Text(it, style = ResonateTheme.type.body, color = ResonateTheme.colors.muted)
                                 }
