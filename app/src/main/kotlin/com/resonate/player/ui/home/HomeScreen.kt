@@ -202,10 +202,10 @@ fun HomeScreen(
 @Composable
 private fun SelahCategoryCard(number: String, title: String, subtitle: String, onClick: () -> Unit) {
     Surface(
-        onClick = onClick,
         modifier = Modifier
             .width(164.dp)
             .height(132.dp)
+            .clickable(onClick = onClick)
             .border(1.dp, ResonateTheme.colors.hairline, androidx.compose.foundation.shape.RoundedCornerShape(18.dp)),
         shape = androidx.compose.foundation.shape.RoundedCornerShape(18.dp),
         color = ResonateTheme.colors.surfaceRaised,
