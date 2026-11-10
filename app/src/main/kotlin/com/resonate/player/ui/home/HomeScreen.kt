@@ -95,7 +95,12 @@ fun HomeScreen(
                             else -> R.string.category_agpeya_hint
                         },
                     )
-                    SelahCategoryCard(\n                        number = "0${index + 1}",\n                        title = title,\n                        subtitle = subtitle,\n                        onClick = { onCategoryClick(listOf("sermons", "hymns", "psalms", "agpeya")[index]) },\n                    )
+                    SelahCategoryCard(
+                        number = "0${index + 1}",
+                        title = title,
+                        subtitle = subtitle,
+                        onClick = { onCategoryClick(listOf("sermons", "hymns", "psalms", "agpeya")[index]) },
+                    )
                 }
             }
         }
@@ -195,8 +200,9 @@ fun HomeScreen(
 }
 
 @Composable
-private fun SelahCategoryCard(number: String, title: String, subtitle: String) {
+private fun SelahCategoryCard(number: String, title: String, subtitle: String, onClick: () -> Unit) {
     Surface(
+        onClick = onClick,
         modifier = Modifier
             .width(164.dp)
             .height(132.dp)
