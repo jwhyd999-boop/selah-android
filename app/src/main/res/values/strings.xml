@@ -118,7 +118,7 @@
     <string name="about_no_internet">Network access will load the SELAH catalogue and stream published audio when connected. Local files remain on your device.</string>
     <string name="about_version">Version %1$s</string>
     <string name="about_whats_new">What\'s new</string>
-    <string name="about_changelog">1.2.1 — Tablet &amp; foldable layouts · seekable mini-player · artwork placeholder\n\n1.2.0 — Your sound stats · backup &amp; restore · 4×1 widget · excluded folders\n\n1.1.0 — Crossfade · skip silence · volume leveling · resume on connect · long-audio memory\n\n1.0.0 — The foundation: library, playback, chroma bleed, queue, playlists, lyrics, search, equalizer, widget</string>
+    <string name="about_changelog">1.0.0 — SELAH foundation: four Coptic Orthodox audio sections, Arabic and English interface, and preparation for a published audio catalogue. More listening features and content will arrive as the library is connected.</string>
     <string name="about_license">MIT License · © 2026 Kimhab</string>
     <string name="about_license_body">Free for everyone. Use it, copy it, change it, share it.</string>
     <string name="about_licenses_body">Built with Jetpack Compose, Media3 ExoPlayer, Room, Coil, Hilt, and Glance — all Apache-2.0. Fonts: Bricolage Grotesque, Figtree (OFL) and JetBrains Mono (OFL).</string>
