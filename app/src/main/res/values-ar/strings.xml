@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">سِلاه – SELAH</string>
+    <string name="tab_home">الرئيسية</string>
+    <string name="tab_library">المكتبة</string>
+    <string name="tab_search">بحث</string>
+    <string name="tab_you">حسابي</string>
+    <string name="home_categories">اكتشف سِلاه</string>
+    <string name="category_sermons">عظات</string>
+    <string name="category_sermons_hint">تعليم قبطي أرثوذكسي</string>
+    <string name="category_hymns">ترانيم</string>
+    <string name="category_hymns_hint">تسابيح وألحان كنسية</string>
+    <string name="category_psalms">مزامير</string>
+    <string name="category_psalms_hint">من سفر المزامير</string>
+    <string name="category_agpeya">الأجبية</string>
+    <string name="category_agpeya_hint">صلوات السواعي اليومية</string>
+    <string name="selah_empty_title">مساحة الاستماع جاهزة</string>
+    <string name="selah_empty_body">سيظهر المحتوى الصوتي القبطي الأرثوذكسي هنا عند إضافته إلى المكتبة.</string>
+    <string name="home_jump_back_in">كمّل من حيث توقفت</string>
+    <string name="home_recently_added">أُضيف حديثًا</string>
+    <string name="home_most_played">الأكثر استماعًا</string>
+    <string name="home_shuffle_everything">تشغيل عشوائي لكل التسجيلات</string>
+    <string name="empty_library_title">لا توجد ملفات صوتية على هذا الجهاز بعد.</string>
+    <string name="empty_library_body">يمكن إضافة ملفات صوتية من الجهاز لاحقًا.</string>
+    <string name="search_hint">ابحث في المكتبة</string>
+    <string name="permission_rationale">يحتاج سِلاه إلى الوصول إلى الملفات الصوتية على جهازك لبناء مكتبتك المحلية.</string>
+    <string name="settings_appearance">المظهر</string>
+    <string name="settings_playback">إعدادات التشغيل</string>
+    <string name="settings_about">حول التطبيق</string>
+    <string name="appearance_theme">السمة</string>
+    <string name="theme_system">حسب إعدادات الجهاز</string>
+    <string name="theme_light">فاتح</string>
+    <string name="theme_dark">داكن</string>
+    <string name="cd_play">تشغيل</string>
+    <string name="cd_pause">إيقاف مؤقت</string>
+    <string name="cd_next">التسجيل التالي</string>
+    <string name="cd_previous">التسجيل السابق</string>
+    <string name="cd_favorite">إضافة للمفضلة</string>
+    <string name="queue_title">قائمة التشغيل</string>
+    <string name="cd_lyrics">الكلمات</string>
+    <string name="lyrics_none">لا توجد كلمات لهذا التسجيل بعد.</string>
+</resources>
