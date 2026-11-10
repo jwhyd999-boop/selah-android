@@ -20,6 +20,8 @@
     <string name="category_agpeya_hint">Hours &amp; daily prayers</string>
     <string name="selah_empty_title">Your listening space is ready</string>
     <string name="selah_empty_body">Coptic Orthodox audio will appear here as the library is added.</string>
+    <string name="category_empty_title">This section is getting ready</string>
+    <string name="category_empty_body">Audio recordings will appear here when the SELAH catalogue is connected and content is published.</string>
     <string name="home_jump_back_in">Jump back in</string>
     <string name="home_recently_added">Recently added</string>
     <string name="home_most_played">Most played</string>
