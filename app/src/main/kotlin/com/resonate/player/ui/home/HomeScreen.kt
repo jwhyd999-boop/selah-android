@@ -192,7 +192,6 @@ fun HomeScreen(
 }
 
 @Composable
-@Composable
 private fun SelahCategoryCard(number: String, title: String, subtitle: String) {
     Surface(
         modifier = Modifier
