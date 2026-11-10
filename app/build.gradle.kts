@@ -17,7 +17,7 @@ val selahSupabaseUrl = providers.gradleProperty("SUPABASE_URL")
 val selahSupabaseAnonKey = providers.gradleProperty("SUPABASE_ANON_KEY")
     .orElse(providers.environmentVariable("SUPABASE_ANON_KEY")).orElse("").get()
 fun String.asBuildConfigString(): String =
-    "\\""+replace("\\", "\\\\").replace("\"", "\\\"")+"\\""
+    "\"" + replace("\\", "\\\\").replace("\"", "\\\"") + "\""
 
 
 // Signing credentials live in git-ignored keystore.properties; without it the
