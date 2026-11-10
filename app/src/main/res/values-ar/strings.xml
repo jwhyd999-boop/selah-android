@@ -169,4 +169,10 @@
     <string name="replay_gain_off">إيقاف</string>
     <string name="replay_gain_track">حسب التسجيل</string>
     <string name="replay_gain_album">حسب الألبوم</string>
+    <string name="catalog_loading">جارٍ تحميل التسجيلات…</string>
+    <string name="catalog_error">تعذّر تحميل مكتبة سِلاه. تحقّق من الاتصال والإعدادات.</string>
+    <string name="catalog_retry">إعادة المحاولة</string>
+    <string name="catalog_not_configured">لم يتم ربط مكتبة سِلاه بعد.</string>
+    <string name="catalog_empty">لا توجد تسجيلات منشورة في هذا القسم حتى الآن.</string>
+    <string name="catalog_play">تشغيل التسجيل</string>
 </resources>
