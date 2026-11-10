@@ -1,19 +1,18 @@
-# Resonate
+# SELAH – سِلاه
 
-**An offline music player for Android that feels like a piece of well-made hardware: instant, quiet, and skinned by whatever you're listening to.**
+**A Coptic Orthodox audio app for Android — sermons, hymns, psalms, and the Agpeya.**
 
-Free. No ads. No trackers. No account. **No Internet permission** — the OS itself guarantees nothing leaves your phone. Resonate plays the music that already lives on your device.
+SELAH is being developed from an MIT-licensed Android audio-player foundation. The current codebase still contains the original local-audio playback engine; the Coptic content catalogue, Arabic-first experience, and online audio delivery are being built in stages.
 
-## 📥 Download
+> **Development build:** SELAH is not ready for public installation yet. The APKs in `release/` are legacy SELAH builds and are not SELAH releases. Do not distribute them as SELAH.
 
-**Grab the latest signed APK from the [`release/`](release/) folder:**
+## Product direction
 
-| File | For |
-|---|---|
-| [resonate-1.2.1-arm64.apk](release/resonate-1.2.1-arm64.apk) | Most phones from ~2016 onward (recommended, smaller) |
-| [resonate-1.2.1-universal.apk](release/resonate-1.2.1-universal.apk) | Any device — use if unsure |
-
-Copy the APK to your phone or tablet, open it, allow "install unknown apps" when prompted. Requires Android 8.0+. Works on phones, tablets, and foldables.
+- Coptic Orthodox content only: sermons, hymns, psalms, and Agpeya prayers.
+- Arabic and English, with right-to-left layout support.
+- Audio-only listening with background playback and lock-screen/media controls.
+- Favorites, playlists, listening history, playback speed, resume position, and lyrics (including timed lyrics where available).
+- Cloud catalogue and streaming will be enabled after the project has a configured storage/backend account and authorized audio recordings.
 
 ---
 
