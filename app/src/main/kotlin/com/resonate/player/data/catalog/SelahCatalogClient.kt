@@ -47,8 +47,11 @@ class SelahCatalogClient(
         return publicObjectUrl(path)
     }
 
-    fun publicArtworkUrl(path: String?): String? =
-        path?.takeIf(String::isNotBlank)?.let(::publicObjectUrl)
+    fun publicArtworkUrl(path: String?): String? {
+        if (path.isNullOrBlank()) return null
+        requireConfigured()
+        return publicObjectUrl(path)
+    }
 
     private fun publicObjectUrl(path: String): String {
         val encodedPath = path.split('/').joinToString("/") { encode(it) }
