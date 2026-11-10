@@ -83,7 +83,7 @@ class PlaybackRepository @Inject constructor(
     }
 
     /** Plays a published remote SELAH recording through the same MediaSession. */
-    suspend fun playCatalogItem(item: CatalogAudioItem, audioUrl: String) {
+    suspend fun playCatalogItem(item: CatalogAudioItem, audioUrl: String, artworkUrl: String?) {
         val mediaItem = MediaItem.Builder()
             .setMediaId("selah:${item.id}")
             .setUri(audioUrl)
@@ -92,7 +92,7 @@ class PlaybackRepository @Inject constructor(
                     .setTitle(item.titleAr)
                     .setArtist(item.speakerOrPerformer.orEmpty())
                     .setAlbumTitle("SELAH")
-                    .setArtworkUri(item.artworkStoragePath?.let(android.net.Uri::parse))
+                    .setArtworkUri(artworkUrl?.let(android.net.Uri::parse))
                     .build()
             )
             .build()
