@@ -298,7 +298,14 @@ private fun MainScaffold(
             }
             composable<CategoryRoute> { entry ->
                 val category = entry.toRoute<CategoryRoute>().category
-                CategoryScreen(category = category, onBack = { navController.popBackStack() })
+                CategoryScreen(
+                    category = category,
+                    onBack = { navController.popBackStack() },
+                    onPlay = { item ->
+                        beforePlay()
+                        playbackViewModel.playCatalogItem(item)
+                    },
+                )
             }
             composable<LibraryRoute> {
                 var addSelection by remember {
