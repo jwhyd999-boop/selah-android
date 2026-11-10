@@ -46,6 +46,7 @@ import kotlinx.collections.immutable.ImmutableList
 fun HomeScreen(
     onShuffleAll: () -> Unit,
     onSongClick: (Song) -> Unit,
+    onCategoryClick: (String) -> Unit,
 ) {
     val viewModel: HomeViewModel = hiltViewModel()
     val jumpBackIn by viewModel.jumpBackIn.collectAsStateWithLifecycle()
@@ -94,7 +95,7 @@ fun HomeScreen(
                             else -> R.string.category_agpeya_hint
                         },
                     )
-                    SelahCategoryCard(number = "0${index + 1}", title = title, subtitle = subtitle)
+                    SelahCategoryCard(\n                        number = "0${index + 1}",\n                        title = title,\n                        subtitle = subtitle,\n                        onClick = { onCategoryClick(listOf("sermons", "hymns", "psalms", "agpeya")[index]) },\n                    )
                 }
             }
         }
