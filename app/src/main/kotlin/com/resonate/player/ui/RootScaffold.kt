@@ -69,6 +69,7 @@ import com.resonate.player.data.repo.ScanState
 import com.resonate.player.ui.components.MiniPlayer
 import com.resonate.player.ui.components.Responsive
 import com.resonate.player.ui.home.HomeScreen
+import com.resonate.player.ui.category.CategoryScreen
 import com.resonate.player.ui.library.LibraryScanViewModel
 import com.resonate.player.ui.library.LibraryScreen
 import com.resonate.player.ui.library.detail.AlbumDetailScreen
@@ -76,6 +77,7 @@ import com.resonate.player.ui.library.detail.ArtistDetailScreen
 import com.resonate.player.ui.library.detail.FolderDetailScreen
 import com.resonate.player.ui.library.detail.GenreDetailScreen
 import com.resonate.player.ui.navigation.AboutRoute
+import com.resonate.player.ui.navigation.CategoryRoute
 import com.resonate.player.ui.navigation.AlbumDetailRoute
 import com.resonate.player.ui.navigation.AppearanceSettingsRoute
 import com.resonate.player.ui.navigation.ArtistDetailRoute
@@ -291,7 +293,12 @@ private fun MainScaffold(
                         beforePlay()
                         playbackViewModel.playFromAllSongs(song.id)
                     },
+                    onCategoryClick = { category -> navController.navigate(CategoryRoute(category)) },
                 )
+            }
+            composable<CategoryRoute> { entry ->
+                val category = entry.toRoute<CategoryRoute>().category
+                CategoryScreen(category = category, onBack = { navController.popBackStack() })
             }
             composable<LibraryRoute> {
                 var addSelection by remember {
