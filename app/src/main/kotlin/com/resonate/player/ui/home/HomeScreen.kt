@@ -59,7 +59,7 @@ fun HomeScreen(
     ) {
         item(key = "header", contentType = "header") {
             Text(
-                text = stringResource(R.string.tab_home),
+                text = stringResource(R.string.app_name),
                 style = ResonateTheme.type.displaySm,
                 color = ResonateTheme.colors.bone,
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
