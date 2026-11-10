@@ -1,5 +1,6 @@
 package com.resonate.player.ui.home
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -19,6 +20,7 @@ import androidx.compose.material.icons.filled.Shuffle
 import androidx.compose.material.icons.outlined.LibraryMusic
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,6 +65,39 @@ fun HomeScreen(
                 modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
             )
         }
+        item(key = "categories-title", contentType = "section-title") {
+            SectionHeader(stringResource(R.string.home_categories))
+        }
+        item(key = "categories", contentType = "category-row") {
+            LazyRow(
+                contentPadding = PaddingValues(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                items(
+                    count = 4,
+                    key = { index -> listOf("sermons", "hymns", "psalms", "agpeya")[index] },
+                    contentType = { "category-card" },
+                ) { index ->
+                    val title = stringResource(
+                        when (index) {
+                            0 -> R.string.category_sermons
+                            1 -> R.string.category_hymns
+                            2 -> R.string.category_psalms
+                            else -> R.string.category_agpeya
+                        },
+                    )
+                    val subtitle = stringResource(
+                        when (index) {
+                            0 -> R.string.category_sermons_hint
+                            1 -> R.string.category_hymns_hint
+                            2 -> R.string.category_psalms_hint
+                            else -> R.string.category_agpeya_hint
+                        },
+                    )
+                    SelahCategoryCard(number = "0${index + 1}", title = title, subtitle = subtitle)
+                }
+            }
+        }
         item(key = "shuffle", contentType = "shuffle") {
             Button(
                 onClick = onShuffleAll,
@@ -104,14 +139,14 @@ fun HomeScreen(
                         modifier = Modifier.size(56.dp),
                     )
                     Text(
-                        text = stringResource(R.string.empty_library_title),
+                        text = stringResource(R.string.selah_empty_title),
                         style = ResonateTheme.type.displaySm,
                         color = ResonateTheme.colors.bone,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(top = 16.dp),
                     )
                     Text(
-                        text = stringResource(R.string.empty_library_body),
+                        text = stringResource(R.string.selah_empty_body),
                         style = ResonateTheme.type.body,
                         color = ResonateTheme.colors.muted,
                         textAlign = TextAlign.Center,
@@ -151,6 +186,30 @@ fun HomeScreen(
                     supported = song.isSupported,
                     onClick = { onSongClick(song) },
                 )
+            }
+        }
+    }
+}
+
+@Composable
+@Composable
+private fun SelahCategoryCard(number: String, title: String, subtitle: String) {
+    Surface(
+        modifier = Modifier
+            .width(164.dp)
+            .height(132.dp)
+            .border(1.dp, ResonateTheme.colors.hairline, androidx.compose.foundation.shape.RoundedCornerShape(18.dp)),
+        shape = androidx.compose.foundation.shape.RoundedCornerShape(18.dp),
+        color = ResonateTheme.colors.surfaceRaised,
+    ) {
+        Column(
+            modifier = Modifier.padding(14.dp),
+            verticalArrangement = Arrangement.SpaceBetween,
+        ) {
+            Text(number, style = ResonateTheme.type.caption, color = ResonateTheme.colors.accent)
+            Column {
+                Text(title, style = ResonateTheme.type.title, color = ResonateTheme.colors.bone, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                Text(subtitle, style = ResonateTheme.type.caption, color = ResonateTheme.colors.muted, maxLines = 1, overflow = TextOverflow.Ellipsis)
             }
         }
     }
