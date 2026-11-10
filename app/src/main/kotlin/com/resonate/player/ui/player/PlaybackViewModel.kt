@@ -3,6 +3,8 @@ package com.resonate.player.ui.player
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.media3.common.Player
+import com.resonate.player.data.catalog.CatalogAudioItem
+import com.resonate.player.data.catalog.CatalogRepository
 import com.resonate.player.data.db.PlayStatDao
 import com.resonate.player.data.prefs.SortPref
 import com.resonate.player.data.prefs.UserPrefsStore
@@ -31,6 +33,7 @@ import kotlinx.coroutines.launch
 @HiltViewModel
 class PlaybackViewModel @Inject constructor(
     private val playbackRepository: PlaybackRepository,
+    private val catalogRepository: CatalogRepository,
     private val connection: PlayerConnection,
     private val playStatDao: PlayStatDao,
     private val chromaEngine: ChromaEngine,
@@ -136,6 +139,14 @@ class PlaybackViewModel @Inject constructor(
             minutes == com.resonate.player.playback.PlaybackService.SLEEP_END_OF_TRACK -> -1L
             else -> null
         }
+    }
+
+    fun playCatalogItem(item: CatalogAudioItem) = viewModelScope.launch {
+        playbackRepository.playCatalogItem(
+            item = item,
+            audioUrl = catalogRepository.audioUrl(item),
+            artworkUrl = catalogRepository.artworkUrl(item),
+        )
     }
 
     fun playExternal(uri: android.net.Uri) = viewModelScope.launch {
