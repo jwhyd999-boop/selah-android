@@ -1,12 +1,5 @@
 import java.util.Properties
 
-val selahSupabaseUrl = providers.gradleProperty("SUPABASE_URL")
-    .orElse(providers.environmentVariable("SUPABASE_URL")).orElse("").get()
-val selahSupabaseAnonKey = providers.gradleProperty("SUPABASE_ANON_KEY")
-    .orElse(providers.environmentVariable("SUPABASE_ANON_KEY")).orElse("").get()
-fun String.asBuildConfigString(): String =
-    "\\""+replace("\\\\", "\\\\\\\\").replace("\\"", "\\\\\\"")+"\\\""
-
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -18,6 +11,14 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.room)
 }
+
+val selahSupabaseUrl = providers.gradleProperty("SUPABASE_URL")
+    .orElse(providers.environmentVariable("SUPABASE_URL")).orElse("").get()
+val selahSupabaseAnonKey = providers.gradleProperty("SUPABASE_ANON_KEY")
+    .orElse(providers.environmentVariable("SUPABASE_ANON_KEY")).orElse("").get()
+fun String.asBuildConfigString(): String =
+    "\\""+replace("\\", "\\\\").replace("\"", "\\\"")+"\\""
+
 
 // Signing credentials live in git-ignored keystore.properties; without it the
 // release build falls back to unsigned (CI-safe).
