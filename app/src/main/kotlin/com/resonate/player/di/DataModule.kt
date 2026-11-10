@@ -11,6 +11,7 @@ import com.resonate.player.data.db.PlayStatDao
 import com.resonate.player.data.db.PlaylistDao
 import com.resonate.player.data.db.QueueDao
 import com.resonate.player.data.db.ResonateDatabase
+import com.resonate.player.data.catalog.SelahCatalogClient
 import com.resonate.player.data.db.SongBrowseDao
 import com.resonate.player.data.db.SongDao
 import dagger.Module
@@ -47,6 +48,10 @@ object DataModule {
             db.execSQL("CREATE INDEX IF NOT EXISTS index_play_events_songId ON play_events(songId)")
         }
     }
+
+    @Provides
+    @Singleton
+    fun selahCatalogClient(): SelahCatalogClient = SelahCatalogClient()
 
     @Provides
     @Singleton
